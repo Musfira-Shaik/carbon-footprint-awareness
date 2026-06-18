@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🌍 Carbon Footprint</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="index.html#education">Learn</a></li>
+                <li><a href="index.html#tips">Tips</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="calculator-section">
+        <div class="container">
+            <h1>Calculate Your Carbon Footprint</h1>
+            <p class="subtitle">Answer the questions below to estimate your annual carbon emissions</p>
+
+            <div class="calculator-grid">
+                <div class="calculator-form">
+                    <form id="carbonForm">
+                        <div class="form-group">
+                            <label for="carMiles">🚗 Car miles driven per week:</label>
+                            <input type="number" id="carMiles" placeholder="e.g., 100" min="0" value="50">
+                            <small>Average is 50 miles/week</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="flights">✈️ Flights per year (hours):</label>
+                            <input type="number" id="flights" placeholder="e.g., 10" min="0" value="5">
+                            <small>Average round-trip flight is ~5 hours</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="electricity">⚡ Monthly electricity (kWh):</label>
+                            <input type="number" id="electricity" placeholder="e.g., 500" min="0" value="400">
+                            <small>Average US home: 400-900 kWh/month</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="heating">🔥 Natural gas usage (therms/month):</label>
+                            <input type="number" id="heating" placeholder="e.g., 30" min="0" value="25">
+                            <small>Average is 20-40 therms/month</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="diet">🍽️ Diet type:</label>
+                            <select id="diet">
+                                <option value="meat">Meat-heavy (3+ servings/day)</option>
+                                <option value="mixed" selected>Mixed (2-3 servings/day)</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="vegan">Vegan</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="shopping">🛍️ New clothes per month:</label>
+                            <input type="number" id="shopping" placeholder="e.g., 5" min="0" value="5">
+                            <small>Average person buys 5-10 items/month</small>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" onclick="calculateFootprint()">Calculate My Footprint</button>
+                    </form>
+                </div>
+
+                <div class="results-section">
+                    <div id="results" class="results-hidden">
+                        <h2>Your Annual Carbon Footprint</h2>
+                        <div class="total-emissions">
+                            <div class="emission-value">
+                                <span id="totalEmissions">0</span>
+                                <span class="unit">metric tons CO2e</span>
+                            </div>
+                            <div class="comparison">
+                                <p>US Average: <strong>16 metric tons/year</strong></p>
+                                <p id="comparison-text"></p>
+                            </div>
+                        </div>
+
+                        <div class="breakdown">
+                            <h3>Breakdown by Category</h3>
+                            <canvas id="emissionChart"></canvas>
+                            <div id="detailedBreakdown"></div>
+                        </div>
+
+                        <div class="recommendations">
+                            <h3>💡 Personalized Recommendations</h3>
+                            <ul id="recommendations-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div class="container">
+            <h2>Impact of Your Choices</h2>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <h4>If you reduce by 50%</h4>
+                    <p class="impact-value">~8 tons CO2e/year</p>
+                    <p>Same as planting 100+ trees annually</p>
+                </div>
+                <div class="impact-card">
+                    <h4>If you reduce by 75%</h4>
+                    <p class="impact-value">~4 tons CO2e/year</p>
+                    <p>Below global average per capita</p>
+                </div>
+                <div class="impact-card">
+                    <h4>If you go carbon neutral</h4>
+                    <p class="impact-value">0 tons CO2e/year</p>
+                    <p>You've offset your entire impact!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Carbon Footprint Awareness. Together we can make a difference! 🌱</p>
+        </div>
+    </footer>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
